@@ -1,0 +1,245 @@
+#include<fstream.h>
+#include<conio.h>
+#include<stdio.h>
+
+class hotel
+{
+private:
+int room_no;
+char name[20];
+char nationality[20];
+char cpr[10];
+char phone[10];
+
+public:
+void add();
+void display();
+void main_menu();
+int check(int);
+void delay(long);
+void delet();
+
+};
+
+
+void hotel::main_menu()
+{
+int opt;
+cout<<"------WELCOME TO HOTEL ISAJ------";
+cout<<"\n\n **Main Menu**";
+cout<<"\n PLEASE SELECT YOUR OPTION";
+cout<<"\n 1.Add customer";
+cout<<"\n 2.display details of a customer";
+cout<<"\n 3.delete customer";
+cout<<"\n 4.Exit \n";
+cin>>opt;
+clrscr();
+ switch(opt)
+ {
+  case 1:add();
+  break;
+  case 2:display();
+  break;
+  case 3:delet();
+  break;
+  case 4:
+  for(int i=25;i<52;i++)
+  {
+   int j=5;
+   gotoxy(i,j);
+   cout<<"*";
+   delay(1000000);
+  }
+  for(int j=5;j<15;j++)
+  {
+   int i=52;
+   gotoxy(i,j);
+   cout<<"*";
+   delay(1000000);
+  }
+  for(i=52;i>24;i--)
+  {
+   j=15;
+   gotoxy(i,j);
+   cout<<"*";
+   delay(1000000);
+  }
+  for(j=15;j>4;j--)
+  {
+   i=25;
+   gotoxy(i,j);
+   cout<<"*";
+   delay(1000000);
+  }
+  gotoxy(32,8);
+  cout<<"T";
+  delay(10000000);
+  gotoxy(33,8);
+  cout<<"H";
+   delay(10000000);
+  gotoxy(34,8);
+  cout<<"A";
+   delay(10000000);
+   gotoxy(35,8);
+   cout<<"N";
+    delay(10000000);
+    gotoxy(36,8);
+    cout<<"K";
+     delay(10000000);
+    gotoxy(37,8);
+    cout<<"Y";
+     delay(1000000);
+    gotoxy(38,8);
+    cout<<"O";
+     delay(1000000);
+    gotoxy(39,8);
+    cout<<"U";
+     delay(1000000);
+  break;
+  default:
+     {
+     cout<<"Opp!!Wrong choice";
+     cout<<"\n press any key to continue";
+     getch();
+     break;
+     }
+ }
+
+}
+void hotel::add()
+{
+ clrscr();
+ int r,sp;
+ ofstream fout;
+ fout.open("records.txt",ios::app|ios::binary);
+ cout<<"\n Enter customer details";
+ cout<<"\n ----------------------";
+ cout<<"\n\n Enter room no.";
+ cin>>r;
+ sp=check(r);
+
+ if(sp)
+ cout<<"\n Sorry!!Room already booked";
+
+ else
+ {
+ room_no=r;
+ cout<<"Name: ";
+ gets(name);
+ cout<<"Nationality: ";
+ gets(nationality);
+ cout<<"cpr: ";
+ gets(cpr);
+ cout<<"Phone no.: " ;
+ gets(phone);
+ fout.write((char*)this,sizeof(hotel));
+ cout<<"\n The room is booked successfully";
+ }
+cout<<"\n press any key to continue";
+getch();
+fout.close();
+//h.main_menu();
+}
+
+
+void hotel::display()
+{
+ clrscr();
+ int r,sp;
+ ifstream fin;
+ fin.open("records.txt",ios::in|ios::binary);
+ cout<<"\n Enter the room no.";
+ cin>>r;
+ sp=check(r);
+
+   if(sp==1)
+   {
+    cout<<"\n Room found!!";
+    cout<<"\n Room no: "<<room_no;
+    cout<<"\n Name: "<<name;
+    cout<<"\n Nationality: "<<nationality;
+    cout<<"\n CPR: "<<cpr;
+    cout<<"\n Phone no.: "<<phone;
+
+   }
+   else
+   {
+   cout<<"\n Sorry! The room doesnt exist or is vacant";
+
+   }
+ cout<<"\n press anykey to continue";
+ getch();
+ fin.close();
+ //h.main_menu();
+}
+
+void hotel::delet()
+{
+ int r;
+ ifstream fin;
+ ofstream fout;
+ fin.open("records.txt",ios::in);
+ fout.open("temporary.txt",ios::out);
+ cout<<"enter the room no. to be made vacant";
+ cin>>r;
+ while(fin.read((char*)&this,sizeof(hotel)))
+	{
+	 if(r!=room_no)
+		 fout.write((char*)this,sizeof(hotel));
+	}
+ remove("records.txt");
+ rename("temporary.txt","records.txt");
+ cout<<"records successfully deleted \n";
+ cout<<"press any key to continue \n";
+ getch();
+ fin.close();
+ fout.close();
+ //h.main_menu();
+}
+
+
+int hotel::check(int r)
+{
+ int sp=0;
+ ifstream fin;
+ fin.open("records.txt",ios::in);
+ while(!fin.eof())
+ {
+  fin.read((char*)this,sizeof(hotel));
+  if(room_no==r)
+  {
+   sp=1;
+   break;
+  }
+ }
+ fin.close();
+ return(sp);
+}
+
+
+
+void hotel::delay(long n)
+{
+ for(long i=0;i<n;i++)
+ {
+ }
+}
+
+void delay(long n)
+{
+ for(long i=0;i<n;i++)
+ {
+ }
+}
+
+
+void main()
+{
+ hotel h;
+ cout<<"WELCOME TO HOTEL MANAGEMENT PROJECT";
+ clrscr();
+ h.main_menu();
+}
+
+
+
