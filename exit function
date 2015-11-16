@@ -1,0 +1,141 @@
+#include<iostream.h>
+#include<math.h>
+#include<conio.h>
+
+void delay3()
+{
+ for(long x=0;x<100000000;x++)
+ {}
+}
+void delay2()
+{
+ for(long x=0;x<99900;x++)
+ {}
+}
+void delay()
+{
+ for(long x=0;x<995000;x++)
+ {}
+}
+void delay1()
+{
+ for(double long x=0;x<1000000;x++)
+ {}
+}
+void main()
+{
+ int r=8,h=35,k=15;
+
+
+  for(float theta=0;theta<360;theta++)
+	{
+	 float x=(r*cos(theta))+h;
+	 float y=(r*sin(theta))+k;
+	 gotoxy(x,y);
+	 cout<<"*";
+	 delay2();
+	}
+ gotoxy(h-5,k-4);
+ cout<<"T";
+ delay1();
+ gotoxy(h-4,k-4);
+ cout<<"H";
+ delay1();
+ gotoxy(h-3,k-4);
+ cout<<"A";
+ delay1();
+ gotoxy(h-2,k-4);
+ cout<<"N";
+ delay1();
+ gotoxy(h-1,k-4);
+ cout<<"K";
+ delay1();
+ gotoxy(h,k-4);
+ cout<<" ";
+ delay1();
+ gotoxy(h+1,k-4);
+ cout<<"Y";
+ delay1();
+ gotoxy(h+2,k-4);
+ cout<<"O";
+ delay1();
+ gotoxy(h+3,k-4);
+ cout<<"U";
+
+ gotoxy(h-7,k-2);
+ cout<<"F";
+ delay1();
+ gotoxy(h-6,k-2);
+ cout<<"O";
+ delay1();
+ gotoxy(h-5,k-2);
+ cout<<"R";
+ delay1();
+ gotoxy(h-4,k-2);
+ cout<<" ";
+ delay1();
+ gotoxy(h-3,k-2);
+ cout<<"U";
+ delay1();
+ gotoxy(h-2,k-2);
+ cout<<"S";
+ delay1();
+ gotoxy(h-1,k-2);
+ cout<<"I";
+ delay1();
+ gotoxy(h,k-2);
+ cout<<"N";
+ delay1();
+ gotoxy(h+1,k-2);
+ cout<<"G";
+ delay1();
+ gotoxy(h+2,k-2);
+ cout<<" ";
+ delay1();
+ gotoxy(h+3,k-2);
+ cout<<"O";
+ delay1();
+ gotoxy(h+4,k-2);
+ cout<<"U";
+ delay1();
+ gotoxy(h+5,k-2);
+ cout<<"R";
+
+ gotoxy(h-4,k);
+ cout<<"P";
+ delay1();
+ gotoxy(h-3,k);
+ cout<<"R";
+ delay1();
+ gotoxy(h-2,k);
+ cout<<"O";
+ delay1();
+ gotoxy(h-1,k);
+ cout<<"G";
+ delay1();
+ gotoxy(h,k);
+ cout<<"R";
+ delay1();
+ gotoxy(h+1,k);
+ cout<<"A";
+ delay1();
+ gotoxy(h+2,k);
+ cout<<"M";
+ delay3();
+
+
+
+ for(int x=h-8;x<=h+8;x++)
+	{
+	 for(int y=k-8;y<=k+8;y++)
+			{
+			 gotoxy(x,y);
+			 cout<<" ";
+			 delay();
+			 delay();
+
+			}
+	}
+}
+
+
